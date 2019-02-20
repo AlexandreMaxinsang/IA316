@@ -1,12 +1,5 @@
 # Recommender System Project
 
-Welcome on the AI316 Recommender System project page.
-
-This project have to be done by team of 2.
-
-Each week a new environment is released. 
-Each environment simulate different aspect of user behavior. 
-Your goal as an agent is to implement a recommender system that get the best performances on each environments.
 
 ## Environments
 Each environment will be accessible through a different IP address. 

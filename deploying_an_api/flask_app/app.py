@@ -7,17 +7,10 @@ from Recommeder import Recommender_embedding
 app = Flask(__name__)
 model = None
 
-
-user_id = 'IAHIZPIW80WPGDW7P7JE'
-base_url = "http://52.47.62.31"
-url_reset = base_url + "/reset"
-url_predict = base_url + "/predict"
-params = {"user_id" : user_id}
-
 def getdata(url_reset,url_predict,params) :
-
     r = requests.get(url=url_reset, params=params)
     data = r.json()
+    print(data.keys())
     user_history = data["user_history"]
     item_history = data["item_history"]
     rating_history = data["rating_history"]
@@ -32,8 +25,14 @@ def getdata(url_reset,url_predict,params) :
 def home():
     return "First Environement"
 
-@app.route("/train")
+@app.route("/train", methods=['GET'])
 def train():
+    api_id = request.args.get('api_id')
+    base_url = request.args.get('base_url')
+    url_reset = base_url + "/reset"
+    url_predict = base_url + "/predict"
+    params = {"user_id" : api_id}
+
     global model
     train_data,next_user,next_item = getdata(url_reset,url_predict,params)
     train_data,next_user,next_item = getdata(url_reset,url_predict,params)
@@ -45,14 +44,14 @@ def train():
     graph = tf.get_default_graph()
     return "Trained"
 
-@app.route("/predict", methods=['GET','POST'])
+@app.route("/predict", methods=['GET'])
 def predict():
 
-    input1 = request.args.get('input1')
-    input2 = request.args.get('input2')
+    user_id = request.args.get('user_id')
+    item_id = request.args.get('item_id')
 
     with graph.as_default():
-        predict = model.predict_embedding([[input1],[input2]])
+        predict = model.predict_embedding([[user_id],[item_id]])
     d = {"predict" : str(predict)}
     return jsonify(d)
 

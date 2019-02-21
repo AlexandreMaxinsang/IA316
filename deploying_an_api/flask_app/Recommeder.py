@@ -40,7 +40,7 @@ class Recommender_embedding :
         self.model = Model(inputs=[user_id_input, item_id_input], outputs=y)
         self.model.compile(optimizer='adam', loss='MSE')
         self.model.fit([train_x["user_id"], train_x["item_id"]], train_y,
-            steps_per_epoch = 1000, epochs=self.epochs,validation_split =0.1,validation_steps = 1000 ,shuffle=self.shuffle)
+            batch_size = self.batch_size, epochs=self.epochs,validation_split =0.1,shuffle=self.shuffle)
 
     def predict_embedding(self, test_x):
         return self.model.predict(test_x)

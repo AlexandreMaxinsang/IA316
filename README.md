@@ -1,5 +1,10 @@
 # Recommender System Project
 
+This work was done by Raymond Kuoch and Alexandre Maxinsang.
+
+## Access to the API
+
+With docker: (localhost:5002/)
 
 ## Environments
 Each environment will be accessible through a different IP address. 

@@ -5,6 +5,8 @@ This work was done by Raymond Kuoch and Alexandre Maxinsang.
 ## Access to the API
 
 With docker: (localhost:5002/)
+To train : localhost:5002/train?api_id=aaaaa&base_url=http://52.47.62.31
+To predict : localhost:5002/predict?user_id=aaaa&item_id=bbbb
 
 ## Environments
 Each environment will be accessible through a different IP address. 

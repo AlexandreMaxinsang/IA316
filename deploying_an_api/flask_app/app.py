@@ -25,7 +25,7 @@ def getdata(url_reset,url_predict,params) :
 def home():
     return "First Environement"
 
-@app.route("/train", methods=['GET'])
+@app.route("/train", methods=['GET', 'POST'])
 def train():
     api_id = request.args.get('api_id')
     base_url = request.args.get('base_url')
@@ -44,7 +44,7 @@ def train():
     graph = tf.get_default_graph()
     return "Trained"
 
-@app.route("/predict", methods=['GET'])
+@app.route("/predict", methods=['GET', 'POST'])
 def predict():
 
     user_id = request.args.get('user_id')

@@ -1,2 +1,7 @@
 Flask
 gunicorn>=19.7.1
+tensorflow>=1.0.1
+requests
+pandas
+numpy
+keras
